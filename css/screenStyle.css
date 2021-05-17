@@ -1,0 +1,315 @@
+/*V tomto súbore definujte vlastnosti štýlov pre všetky stránky vášho statického blogu pre zobrazenie na obrazovke.*/
+/*Please, define here the style for all the pages of your static blog for displaying on screen.*/
+
+html{
+    font-family: "Arial", "Verdana", sans-serif;
+    font-size: 100%;
+}
+
+body{
+    background-color: #edebd7;
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+            "header header"
+            "aside navigation"
+            "aside main"
+            "footer footer";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: max-content;
+    grid-gap: 1rem;
+}
+
+.main{
+    grid-area: main;
+}
+
+.header{
+    padding-top: 1%;
+    font-size: 125%;
+    height: 4rem;
+    background: rgb(178,164,138);
+    background: linear-gradient(90deg, rgba(178,164,138,1) 28%, rgba(237,235,215,1) 100%);
+    grid-area: header;
+}
+
+.header > h1 {
+    text-align: right;
+}
+
+a{
+    text-decoration: none;
+    color: brown;
+}
+
+a:hover{
+    color: #b5651d;
+}
+
+.navigation{
+    background-color: bisque;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 3em;
+    grid-area: navigation;
+}
+
+.navigation a{
+    color: black;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 100%;
+    flex-grow: 1;
+}
+
+.navigation a:hover{
+    background-color: antiquewhite;
+    color: black;
+}
+
+.active{
+    background-color: burlywood;
+    font-weight: bold;
+}
+
+.knihy-obrazok {
+    position: relative;
+    margin: 0 auto;
+}
+
+.knihy-obrazok img{
+    position: absolute;
+    max-width: 50%;
+    right: 0;
+    border-radius: 40%;
+}
+
+.knihy-obrazok img.top{
+    animation-name: prelievanie-knih;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-direction: alternate;
+}
+
+.zoznamy {
+    max-width: 50%;
+}
+
+.table-reading {
+    border-collapse: separate;
+    border: solid black 1px;
+    border-radius: 6px;
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.table-reading th, .table-reading td {
+    text-align: center;
+    border-left: 1px;
+    border-top: 1px;
+    width: 100%;
+}
+
+.table-reading th{
+    background-color: #B2A48A;
+}
+
+.table-row > tr {
+    transition: all 0.5s ease-out;
+}
+
+.table-row > tr:nth-child(even){
+    background-color: #D4CAB1;
+}
+
+.table-row > tr:hover {
+    font-size: 150%;
+}
+
+.responz-knihy{
+    width: 50%;
+    float: right;
+    padding: 10px 10px;
+}
+
+.list-square{
+    list-style: square;
+}
+
+.list-ol {
+    list-style-type: upper-roman;
+}
+
+.oblubene_knihy > div{
+    float: left;
+    text-align: center;
+    padding: 0 1em;
+}
+
+.oblubene_knihy > div > img{
+    max-height: 360px;
+}
+
+.aside{
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    color: black;
+    text-align: left;
+    grid-area: footer;
+}
+
+@media screen and (max-width: 1020px){
+    body {
+        width: 100%;
+    }
+
+    .navigation a{
+        font-size: 90%;
+    }
+
+    p{
+        font-size: 1.2em;
+    }
+}
+
+#visMessagesCon > article{
+    border-radius: 3px;
+    background-color: #FCFEEC;
+    padding: 10px;
+}
+
+#visMessagesCon > article > label{
+    font-weight: bold;
+}
+
+#deleteBtn{
+    margin: 10px;
+    float: right;
+}
+
+.hidden-btn{
+    visibility: hidden;
+}
+
+#my-form{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+input[type=text], input[type=email], input[type=url], textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+label{
+    font-weight: bold;
+}
+
+#my-form > label > span{
+    float: right;
+}
+
+.not-valid{
+    border: 1px solid red;
+}
+
+.text-not-valid{
+    font-weight: bold;
+    color: red;
+}
+
+@media screen and (max-width: 765px){
+    body{
+        width: 100%;
+        display: block;
+    }
+
+    .main{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aside{
+        display: none;
+    }
+
+    .zoznamy{
+        max-width: 100%;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .knihy-obrazok{
+        max-width: 100%;
+        width: 50%;
+        order: 1;
+    }
+
+    .knihy-obrazok img{
+        position: relative;
+        max-width: 100%;
+    }
+
+    .table-reading{
+        order: 2;
+    }
+
+    .artikel-spodny{
+        order: 3;
+    }
+
+    .main > picture {
+        position: relative;
+        max-width: 100%;
+        width: 70%;
+        order: 4;
+    }
+
+    .top{
+        display: none;
+    }
+}
+
+@keyframes prelievanie-knih {
+    0%{
+        opacity:1;
+    }
+    35%{
+        opacity: 1;
+    }
+    65%{
+        opacity: 0;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+
+#googleSignIn{
+    float: left;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.hiddenElm {display:none;}
+
+
+.showElm {display:block;}

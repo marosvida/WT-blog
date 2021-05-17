@@ -1,0 +1,537 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Maros Vida" />
+    <meta name="google-signin-client_id" content="733069658410-853hbqsgdcs4fpf1bi51j5rvpqbjddt4.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet"
+          href="css/screenStyle.css"
+          media="screen"/>
+
+    <title>O knihách</title>
+</head>
+
+<body>
+<header class="header" id="menuTitle">
+    <aside id="googleSignIn">
+        <div id="SignInButton"></div>
+        <div id="SignedIn">
+            <span id="userName"></span><br> <button onclick="signOut()">Odhlásiť sa</button>
+        </div>
+    </aside>
+    <h1>BOOKS.</h1>
+</header>
+
+<nav class="navigation" >
+    <a href="#index">Úvodná stránka</a>
+    <a href="#article1">Prečo čítať?</a>
+    <a href="#article2">Články</a>
+    <a href="#artInsert">Pridať článok</a>
+    <a href="#article3">Vaše správy</a>
+
+</nav>
+
+<main id="router-view" class="main">
+</main>
+
+<aside class="aside">
+    <img src="fig/aside_1.jpg" alt="aside_books" />
+    <img src="fig/aside_2.jpg" alt="aside_books" />
+    <img src="fig/aside_3.jpg" alt="aside_books" />
+    <img src="fig/aside_4.jpg" alt="aside_books" />
+    <img src="fig/aside_5.jpg" alt="aside_books" />
+    <img src="fig/aside_6.jpg" alt="aside_books" />
+    <img src="fig/aside_7.jpg" alt="aside_books" />
+    <img src="fig/aside_8.jpg" alt="aside_books" />
+    <img src="fig/aside_9.jpg" alt="aside_books" />
+    <img src="fig/aside_10.jpg" alt="aside_books" />
+    <img src="fig/aside_11.jpg" alt="aside_books" />
+    <img src="fig/aside_12.jpg" alt="aside_books" />
+</aside>
+
+
+<footer class="footer">
+    <h6>
+        &copy; Maroš Vida, 2021. všetky práva vyhradené.
+    </h6>
+</footer>
+
+<script id="template-index" type="text/template">
+    <h1>Stránka o knihách</h1>
+    <p>
+        Knihy.
+    </p>
+    <p>
+        Všetci sme sa s nimi už stretli. Niektorí ich milujeme a nevieme si bez nich predstaviť ani deň, iní po nich siahneme len ako po poslednej možnosti. <br>
+        Nech Vás už na túto stránku priviedlo čokoľvek, tak dúfam, že po jej prezretí to Váš vzťah ku knihám pozitívne ovplyvní a možno že sa dozviete aj niečo nové a zaujímavé. <br>
+        Vitajte!
+    </p>
+    <p>
+        Maroš Vida <a href="mailto:maros.vida@student.tuke.sk">maros.vida@student.tuke.sk</a>
+    </p>
+
+    <form id="my-form" novalidate>
+
+        <label>
+            Meno
+            <input name="name" type="text" id="author-nazor" maxlength="50" />
+            <span class="error-name"></span>
+        </label>
+
+        <label>
+            Email
+            <input name="email" type="email" />
+            <span class="error-email"></span>
+        </label>
+
+        <label>
+            Obrázok URL
+            <input name="imageUrl" type="url" />
+            <span class="error-imageUrl"></span>
+        </label>
+
+        <div>
+            <label>Pohlavie</label>
+            <label>
+                <input type="radio" name="gender" value="zena">
+                Žena
+            </label>
+
+            <label>
+                <input type="radio" name="gender" value="muz">
+                Muž
+            </label>
+
+            <label>
+                <input type="radio" name="gender" value="ine">
+                Iné
+            </label>
+        </div>
+
+        <br>
+
+        <label>
+            Napíšte nám
+            <textarea name="message" cols="50" rows="10" placeholder="Sem zadajte Vašu správu" ></textarea>
+            <span class="error-message"></span>
+        </label>
+
+        <label>
+            Chcem dostávať emaily s novinkami
+            <input type="checkbox" name="news">
+        </label>
+
+        <br>
+        <br>
+
+        <label>
+            Vyberte Váš obľúbený žáner
+            <input type="text" name="category" list="category">
+        </label>
+        <datalist id="category">
+            <option value="Detektívka">
+            <option value="Fantasy, Sci-fi">
+            <option value="Dobrodružná literatúra">
+            <option value="Horor">
+            <option value="Náučná literatúra">
+            <option value="Poézia">
+            <option value="Iné">
+        </datalist>
+
+
+        <button name="submitBtn" type="submit">Poslať</button>
+        <button name="resetBtn" type="reset">Reset</button>
+    </form>
+</script>
+
+
+<!--Templates for html, dynamically inserted by the router -->
+<script id="template-article1" type="text/template">
+    <div>
+        <h1>Prečo čítať knihy?</h1>
+        <p>
+            Určite sme už počuli, že úspešní ľuďia čítajú. Prečo je to ale také dôležité? Ako môže mať čítanie kníh taký pozitívny dopad na náš život?
+        </p>
+
+        <p>
+            Sám som niekedy čítal veľmi málo. No to sa zmenilo, keď som objavil koľko skvelých vecí sa môžem z kníh dozvedieť. A nielen dozvedieť, čítanie kníh pozitívne ovplyvňuje náš život z oveľa širšieho spektra ako len z pohľadu vedomostí.
+        </p>
+    </div>
+    <div class="knihy-obrazok">
+        <img class="bottom" src="fig/knihy_na_sebe_2.jpg" alt="knihy na sebe"/>
+        <img class="top" src="fig/knihy.jpg" alt="knihy na sebe" />
+    </div>
+
+    <section class="zoznamy">
+        <h3>
+            Čítanie prináša napríklad aj všetky tieto benefity:
+        </h3>
+        <ul class="list-square">
+            <li>Budete mať bystrejšiu myseľ</li>
+            <li>Budete viac kreatívny</li>
+            <li>Poznanie je moc</li>
+            <li>Rozšírite si slovnú zásobu</li>
+            <li>Porazíte stres</li>
+            <li>Silnejšie analytické a kritické myslenie</li>
+            <li>Zlepšené sústredenie</li>
+            <li>Budete lepšie písať</li>
+        </ul>
+
+        <h3>
+            Ako teda začať s čítaním?
+        </h3>
+        <ol class="list-ol">
+            <li>Vždy maj pri sebe niečo na čítanie</li>
+            <li>Obklop sa dobrými knihami</li>
+            <li>Zisti, čo čítajú ľudia okolo Teba, inšpiruj sa</li>
+            <li>Ťažké čítanie striedaj s ľahším</li>
+            <li>Urči si čas, ktorý chceš čítaniu venovať</li>
+            <li>Nájdi si vhodné miesto na čítanie</li>
+            <li>Nevadí, keď knihu nedočítaš</li>
+        </ol>
+    </section>
+
+    <table class="table-reading">
+        <caption>Porovnanie čítania v jednotlivých štátoch</caption>
+        <thead>
+        <tr>
+            <th>Štát</th>
+            <th colspan="2">Muži a Ženy</th>
+            <th>Dĺžka čítania/deň</th>
+        </tr>
+        </thead>
+        <tbody class="table-row">
+        <tr>
+            <td>Slovensko</td>
+            <td>35%</td>
+            <td>42%</td>
+            <td>12 min.</td>
+        </tr>
+        <tr>
+            <td>Nemecko</td>
+            <td>45%</td>
+            <td>50%</td>
+            <td>15 min.</td>
+        </tr>
+        <tr>
+            <td>Franzúzsko</td>
+            <td>28%</td>
+            <td>62%</td>
+            <td>13 min.</td>
+        </tr>
+        <tr>
+            <td>Fínsko</td>
+            <td>52%</td>
+            <td>74%</td>
+            <td>17 min.</td>
+        </tr>
+        <tr>
+            <td>Chorvátsko</td>
+            <td>12%</td>
+            <td>16%</td>
+            <td>7 min.</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Priemer</th>
+            <th>34.4%</th>
+            <th>48.8%</th>
+            <th>12.8 min.</th>
+        </tr>
+        </tfoot>
+    </table>
+
+    <picture>
+        <source media="(max-width: 300px)" srcset="fig/books_300.jpg">
+        <source media="(max-width: 600px)" srcset="fig/books_600.png">
+        <source media="(max-width: 800px)" srcset="fig/books_800.jpg">
+        <img class="responz-knihy" src="fig/books_big.jpg" alt="books">
+    </picture>
+
+    <article class="artikel-spodny">
+        <h3>
+            Poďme čítať!
+        </h3>
+        <p>
+            Pozitívnych dôvodov, prečo vziať knihu do ruky je naozaj enormné množstvo. No najlepším spôsobom ako sa o nich presvedčiť je na vlastnej koži.
+            <br><br>
+            Rôznych žánrov a titulov sú na svete mraky. Stačí si len vybrať. Určite Vás niečo zaujme.
+            <br><br>
+            A ak neviete, čo by ste si mali vybrať, tak jednoducho začnite.
+        </p>
+
+        <h2>
+            „Človek, ktorý číta, prežije tisíc životov, kým zomrie. Človek, ktorý nikdy nečítal prežije iba jeden.”
+        </h2>
+    </article>
+</script>
+
+<script id="template-articles" type="text/template">
+    <p>
+        Strana {{currPage}}/{{pageCount}}
+    </p>
+    <nav>
+        {{#prevPage}}
+        <a href="#article2/{{prevPage}}"><< Späť</a>
+        {{/prevPage}}
+        {{#nextPage}}
+        <a href="#article2/{{nextPage}}">Ďalej >></a>
+        {{/nextPage}}
+    </nav>
+    {{#articleList}}
+    <article>
+        <h2><a href="{{detailLink}}">{{title}}</a></h2>
+        <div>
+            {{{content}}}
+        </div>
+        <h6>
+            by {{author}}
+        </h6>
+        <hr>
+    </article>
+    {{/articleList}}
+    <nav>
+        {{#prevPage}}
+        <a href="#article2/{{prevPage}}"><< Späť</a>
+        {{/prevPage}}
+        {{#nextPage}}
+        <a href="#article2/{{nextPage}}">Ďalej >></a>
+        {{/nextPage}}
+    </nav>
+
+
+    <footer  class="menuLink"><a href="#index">Späť na úvodnú stránku</a></footer>
+
+</script>
+
+<script id="template-articles-error" type="text/template">
+
+    <article>
+        <h2>Articles acquisition failed</h2>
+        <p>
+            {{errMessage}}
+        </p>
+    </article>
+    <footer  class="menuLink"><a href="#article2">Späť na články</a></footer>
+
+</script>
+
+<script id="template-article3" type="text/template">
+    <h2>Vaše správy</h2>
+    <button name="deleteBtn" id="deleteBtn" type="submit">Zmaž staré správy</button>
+    {{#.}}
+    <div id="visMessagesCon">
+        <article >
+            <h3>{{name}}  <i>{{created}}</i></h3>
+            <label>ImgUrl:</label> {{imgUrl}}
+            <p>
+                <label>Správa:</label>
+                <br>
+                {{message}}
+            </p>
+            <p>
+                <label>Pohlavie:</label> {{gender}}
+                <br>
+                <label>Obľúbený žáner:</label> {{category}}
+                <br>
+                <label>Kontakt:</label> {{email}}
+                <br>
+                {{news}}
+            </p>
+        </article>
+    </div>
+    {{/.}}
+</script>
+
+<script id="template-article" type="text/template">
+    <article>
+        <h2>{{title}}</h2>
+        <p>
+            by {{author}}
+        </p>
+        {{#imageLink}}
+        <figure>
+            <img src="{{imageLink}}" alt="article figure" />
+        </figure>
+        {{/imageLink}}
+        <div>{{{content}}}</div>
+        <p>
+            Keywords:
+            {{tags}}
+        </p>
+    </article>
+
+    <footer>
+        <a href="#article2"><< Back</a>
+        <a href="{{editLink}}">Edit</a>
+        <a href="{{deleteLink}}">Delete</a>
+        <a href="#menuTitle">Up to the menu</a>
+    </footer>
+
+    <h3>Komentáre</h3>
+    <nav>
+        <span>Strana komentárov {{currCommPage}}/{{commTotalPages}}</span>
+        <br>
+        {{#prevPageCommLink}}
+        <a href="{{prevPageCommLink}}"><< Späť</a>
+        {{/prevPageCommLink}}
+        {{#nextPageCommLink}}
+        <a href="{{nextPageCommLink}}">Ďalej >></a>
+        {{/nextPageCommLink}}
+    </nav>
+    <br>
+    {{#comments}}
+    <article>
+        <div>
+            {{{text}}}
+        </div>
+        <h6>
+            by {{author}}
+        </h6>
+        <hr>
+    </article>
+    {{/comments}}
+
+    <div id="addComment"></div>
+
+</script>
+
+<script id="template-article-form" type="text/template">
+    <article>
+        <h2>{{formTitle}}</h2> <br><br>
+
+        <form id="articleForm">
+            <label for="author">Autor:</label>
+            <input type="text" name="author" id="author" value="{{author}}" size="50"
+                   title="Article author, max. length 100 characters."
+                   maxlength="100" placeholder="e.g. Ján Trieska" />
+            <br>
+            <label for="title">Názov:</label>
+            <input type="text" name="title" id="title" value="{{title}}" size="50"
+                   maxlength="100" pattern="\S[\S\s]*" placeholder="e.g. My story." required
+                   title="Article title, mandatory item, max. length: 100 characters.
+The first character must not be a space."  />
+            <br>
+            <label for="imageLink">Obrázok (url):</label>
+            <input type="url" name="imageLink" id="imageLink" value="{{imageLink}}" size="50"
+                   title="Image URL, max. length 100 characters." maxlength="100"/>
+            <br>
+            <label></label>
+            <button type="button" id="btShowFileUpload">
+                Nahrať obrázok
+            </button>
+
+            <fieldset class="added hiddenElm" id="fsetFileUpload">
+                <legend>Nahrať obrázok</legend>
+                <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
+                <br />
+                <button type="button" id="btFileUpload">
+                    Nahrať </button>
+                <button type="button" id="btCancelFileUpload">
+                    Zrušiť nahrávanie </button>
+            </fieldset>
+
+
+            <br>
+            <label for="content">Článok:</label>
+            <textarea name="content" id="content" spellcheck="true" lang="sk" cols="50" rows="20" required title="Article content, mandatory item, can be plain text or in HTML.">{{content}}</textarea>
+            <br>
+            <label for="tags">Tagy:</label>
+            <input  type="text" name="tags" id="tags" value="{{tags}}" size="50"
+                    title="Keyword list, comma separated." placeholder="e.g. village, drama" />
+            <br> <br>
+            <button type="reset"> Reset Form </button>
+            <button type="submit"> {{submitBtTitle}} </button>
+
+        </form>
+    </article>
+
+    <footer>
+        <a href="{{backLink}}" class="linkAsButton"><< Back</a>
+        <a href="#menuTitle" class="linkAsButton">Up to the menu</a>
+    </footer>
+</script>
+
+<script id="template-add-article" type="text/template">
+    <article>
+        <form id="add-article-form" novalidate>
+            <label>Autor:
+                <input type="text" name="author" size="50" id="author-add-article" maxlength="100" />
+            </label>
+            <br>
+            <label>Názov:
+                <input type="text" name="title" size="50" maxlength="100" pattern="\S[\S\s]*" />
+                <span class="error-title"></span>
+            </label>
+            <br>
+            <label>Obrázok (url):
+                <input type="url" name="imageLink" id="imageLink-new" size="50"/>
+                <span class="error-ImgLink"></span>
+            </label>
+            <br>
+            <button type="button" id="btShowFileUpload-new">
+                Nahrať obrázok
+            </button>
+
+            <fieldset id="fsetFileUpload-new">
+                <legend>Nahrať obrázok</legend>
+                <input type="file" id="flElm-new" name="file" accept="image/jpeg, image/png"/>
+                <br />
+                <button type="button" id="btFileUpload-new">
+                    Poslať </button>
+                <button type="button" id="btCancelFileUpload-new">
+                    Zrušiť nahrávanie </button>
+            </fieldset>
+
+            <br>
+            <label>Článok
+                <textarea name="content" spellcheck="true" lang="sk" cols="50" rows="20"></textarea>
+                <span class="error-content"></span>
+            </label>
+            <br>
+            <label>Tagy:
+                <input  type="text" name="tags" size="50"/>
+            </label>
+            <br> <br>
+            <button type="submit"> Poslať </button>
+            <button type="reset"> Reset </button>
+
+        </form>
+    </article>
+</script>
+
+<script id="template-addCommForm" type="text/template">
+    <article>
+        <form id="add-comment-form">
+            <label>Autor:
+                <input type="text" name="author"size="50" id="author-add-comment" maxlength="100" required/>
+            </label>
+            <br>
+            <br>
+            <label>Text
+                <textarea name="text" spellcheck="true" lang="sk" cols="50" rows="20" required></textarea>
+            </label>
+            <br> <br>
+            <button type="submit"> Pridať </button>
+            <button type="button" id="cancelComm"> Zrušiť </button>
+        </form>
+
+    </article>
+</script>
+
+<script id="template-addCommBtn" type="text/template">
+    <button id="showAddCommFormBtn">Pridaj komentár</button>
+</script>
+
+<!--JavaScript code, inserted as a module-->
+<script type="module" src="js/index.js"></script>
+<script type="module" src="js/paramHashRouter.js"></script>
+<script type="module" src="js/articleFormsHandler.js"></script>
+
+<script src="js/googleSignIn.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=startGSingIn" async defer></script>
+
+</body>
+</html>
